@@ -1,0 +1,26 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    
+news:
+    path: /news
+    defaults: { _controller: "AppBundle:Default:news"}
+
+news_veiw_tesla:    
+    path: /news/veiw/{tesla_new_car}
+    defaults: { _controller: "AppBundle:Default:tesla"}
+    
+news_page_number:
+    path: /news/page/{number}
+    defaults: { _controller: "AppBundle:Default:page", number: 1}
+    requirements: {number: '\d+'}
+
+news_long_path: 
+    path: /news/page/1/{sort}/title/{order}/desc
+    defaults: { _controller: "AppBundle:Default:longPath", sort: sort, order: order}
+    
+language:
+    path: /{language}/news
+    defaults: { _controller: "AppBundle:Default:language", language: ua}
+    requirements: 
+        language: ua|ru|en
